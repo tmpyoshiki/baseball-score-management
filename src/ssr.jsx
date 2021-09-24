@@ -12,6 +12,7 @@ const ssr = () => (`
       <div id="app">
       ${renderToString(<CountUp />)}
       </div>
+      <script src="./client.js"></script>
     </body>
   </html>
 `);
