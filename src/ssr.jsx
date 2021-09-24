@@ -1,3 +1,7 @@
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import CountUp from './CountUp'
+
 const ssr = () => (`
   <html>
     <head>
@@ -6,7 +10,7 @@ const ssr = () => (`
     </head>
     <body>
       <div id="app">
-        <h1>テスト</h1>
+      ${renderToString(<CountUp />)}
       </div>
     </body>
   </html>
