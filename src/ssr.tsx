@@ -2,7 +2,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import CountUp from './CountUp'
 
-const ssr = () => (`
+const ssr = (): string => (`
   <html>
     <head>
       <title>Test</title>
