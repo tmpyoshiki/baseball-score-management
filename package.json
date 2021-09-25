@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node -r esm index.js",
-    "babel": "babel src -x '.ts,.tsx' -d views",
+    "start": "node -r esm dist/index.js",
+    "babel": "babel src -x '.ts,.tsx' -d dist",
     "build": "webpack --mode development"
   },
   "license": "MIT",

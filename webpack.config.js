@@ -1,4 +1,6 @@
 const path = require('path');
+const glob = require('glob');
+const entries = glob.sync('./src/view/**/Render.tsx');
 
 module.exports = {
   resolve: {
@@ -6,12 +8,11 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   entry: {
-    // エントリーポイントの指定
-    client: './src/client.tsx',
+    client: entries
   },
   output: {
     // 書き出し先のディレクトリを指定(assets)
-    path: path.resolve(__dirname, 'assets'),
+    path: path.resolve(__dirname, 'dist/assets'),
     // 書き出すファイルの名前を指定(名前は変更しない)
     filename: '[name].js',
   },
