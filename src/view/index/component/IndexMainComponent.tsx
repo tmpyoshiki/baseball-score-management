@@ -1,7 +1,7 @@
 import React from "react";
 import { Reset } from "styled-reset";
 import Navigation from "../../common/component/Navigation";
-import IndexHeader from "./IndexHeader";
+import IndexTop from "./IndexTop";
 import IndexInformation from "./IndexInformation";
 
 const IndexMainComponent = (): JSX.Element => {
@@ -9,7 +9,7 @@ const IndexMainComponent = (): JSX.Element => {
     <React.Fragment>
       <Reset />
       <Navigation />
-      <IndexHeader />
+      <IndexTop />
       <IndexInformation />
     </React.Fragment>
   );

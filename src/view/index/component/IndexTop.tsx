@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "styled-components";
 
-const IndexHeader = (): JSX.Element => {
+const IndexTop = (): JSX.Element => {
   return (
     <article>
       <h1>BMT</h1>
@@ -11,4 +11,4 @@ const IndexHeader = (): JSX.Element => {
   );
 };
 
-export default IndexHeader;
+export default IndexTop;
