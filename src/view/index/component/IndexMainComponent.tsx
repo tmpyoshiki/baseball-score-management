@@ -1,16 +1,16 @@
 import React from "react";
 import { Reset } from "styled-reset";
 import Navigation from "../../common/component/Navigation";
-import IndexContents from "./IndexContents";
-import Header from "../../common/component/Header";
+import IndexHeader from "./IndexHeader";
+import IndexInformation from "./IndexInformation";
 
 const IndexMainComponent = (): JSX.Element => {
   return (
     <React.Fragment>
       <Reset />
-      <Header />
       <Navigation />
-      <IndexContents />
+      <IndexHeader />
+      <IndexInformation />
     </React.Fragment>
   );
 };

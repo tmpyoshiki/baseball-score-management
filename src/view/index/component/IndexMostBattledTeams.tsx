@@ -1,6 +1,6 @@
 import React from "react";
 
-const IndexContents = (): JSX.Element => {
+const IndexInformation = (): JSX.Element => {
   return (
     <React.Fragment>
       <article>
@@ -54,11 +54,13 @@ const IndexContents = (): JSX.Element => {
             <a href="/teams/me">もっと見る</a>
           </li>
         </ul>
-        <p>
-          <a href="/score-keeping">スコアを記録する</a>
-        </p>
+        <ul>
+          <li>
+            <a href="/teams/me">もっと見る</a>
+          </li>
+        </ul>
       </article>
     </React.Fragment>
   );
 };
-export default IndexContents;
+export default IndexInformation;
