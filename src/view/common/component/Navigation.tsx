@@ -15,7 +15,7 @@ const Title = styled.div`
   display: flex;
 `;
 const ShortTitle = styled.h1`
-  margin-left: auto 0 auto 30px;
+  margin: auto 0 auto 30px;
   text-align: center;
   vertical-align: middle;
   font: italic 36px bold;
