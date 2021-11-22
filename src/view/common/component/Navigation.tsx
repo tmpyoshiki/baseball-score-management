@@ -22,7 +22,7 @@ const ShortTitle = styled.h1`
   color: #ffffff;
 `;
 const FullTitle = styled.p`
-  width: 75px;
+  width: 105px;
   margin: auto 0 auto 30px;
   overflow-wrap normal;
   font: italic 18px bold;
