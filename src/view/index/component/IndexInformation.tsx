@@ -1,14 +1,26 @@
 import React from "react";
 import IndexMostBattledTeams from "./IndexMostBattledTeams";
 import IndexLatestGames from "./IndexLatestGames";
+import styled from "styled-components";
+
+const HiddenH1 = styled.h1`
+  display: none;
+`;
+
+const Information = styled.section`
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+`;
 
 const IndexInformation = (): JSX.Element => {
   return (
-    <section>
-      <h1>管理しているチーム情報の概要</h1>
+    <Information>
+      <HiddenH1>管理しているチーム情報の概要</HiddenH1>
       <IndexMostBattledTeams />
       <IndexLatestGames />
-    </section>
+    </Information>
   );
 };
 export default IndexInformation;
