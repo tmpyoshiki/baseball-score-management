@@ -1,6 +1,6 @@
 import React from 'react';
 import { Reset } from 'styled-reset';
-import Navigation from '../../common/Navigation';
+import Navigation from '../../common/component/Navigation';
 
 const Main = (): JSX.Element => {
   return (

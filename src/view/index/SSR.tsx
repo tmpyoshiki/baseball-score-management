@@ -1,17 +1,10 @@
 import React from 'react';
-import Header from '../common/Header';
+import SSRTemplate from '../common/template/SSRTemplate';
 import Main from './component/Main';
 
-const SSR = (): JSX.Element => (
-  <html>
-    <Header title="test"/>
-    <body>
-      <div id="app">
-        <Main />
-      </div>
-      <script src="./client.js"></script>
-    </body>
-  </html>
-);
+const SSR = (): JSX.Element => {
+  return (<SSRTemplate mainComponent={<Main />} />)
+}
+
 
 export default SSR;
