@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../component/Header";
+import Head from "../component/Head";
 
 interface Props {
   readonly pageName: string;
 }
 const PageTemplate: React.FC<Props> = ({ pageName }) => (
   <html>
-    <Header title="test" />
+    <Head title="test" />
     <body>
       <div id="app"></div>
       <script src={`./${pageName}.js`}></script>

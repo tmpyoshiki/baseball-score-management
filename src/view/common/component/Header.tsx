@@ -4,11 +4,6 @@ interface Props {
   title: string;
 }
 
-const Header = ({ title }: Props): JSX.Element => (
-  <head>
-    <title>{title}</title>
-    <meta charSet="utf-8" />
-  </head>
-);
+const Header = (): JSX.Element => <h1></h1>;
 
 export default Header;
