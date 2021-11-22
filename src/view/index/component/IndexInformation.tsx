@@ -10,7 +10,7 @@ const HiddenH1 = styled.h1`
 const Information = styled.section`
   width: 900px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 0 auto;
 `;
 
