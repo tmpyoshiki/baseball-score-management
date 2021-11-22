@@ -1,9 +1,5 @@
 import React from "react";
 
-interface Props {
-  title: string;
-}
-
 const Header = (): JSX.Element => {
   return (
     <header>
