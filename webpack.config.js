@@ -5,7 +5,7 @@ const glob = require("glob");
  * CSRビルド後のファイルを出力するメソッド
  * @param fileName ファイル名
  */
-const path = (fileName) => `./src/view/${fileName}/CSR.tsx`;
+const makeCsrPath = (fileName) => `./src/view/${fileName}/CSR.tsx`;
 
 module.exports = {
   resolve: {
@@ -13,7 +13,7 @@ module.exports = {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   entry: {
-    index: path("index"),
+    index: makeCsrPath("index"),
   },
   output: {
     // 書き出し先のディレクトリを指定(assets)
