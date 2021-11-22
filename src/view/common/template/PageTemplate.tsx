@@ -1,12 +1,15 @@
 import React from "react";
 import Header from "../component/Header";
 
-const PageTemplate: React.FC = () => (
+interface Props {
+  readonly pageName: string;
+}
+const PageTemplate: React.FC<Props> = ({ pageName }) => (
   <html>
     <Header title="test" />
     <body>
       <div id="app"></div>
-      <script src="./client.js"></script>
+      <script src={`./${pageName}.js`}></script>
     </body>
   </html>
 );

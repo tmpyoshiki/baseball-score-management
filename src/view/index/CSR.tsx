@@ -1,5 +1,5 @@
 import React from "react";
 import { hydrate } from "react-dom";
-import IndexView from "./IndexView";
+import IndexMainComponent from "./component/IndexMainComponent";
 
-hydrate(<IndexView />, document.getElementById("app"));
+hydrate(<IndexMainComponent />, document.getElementById("app"));
