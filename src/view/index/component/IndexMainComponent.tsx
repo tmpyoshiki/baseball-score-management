@@ -8,7 +8,7 @@ const IndexMainComponent = (): JSX.Element => {
   return (
     <React.Fragment>
       <Reset />
-      <Navigation />
+      <Navigation loginTeamName="チームA" />
       <IndexTop />
       <IndexInformation />
     </React.Fragment>

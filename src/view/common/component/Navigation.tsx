@@ -48,7 +48,10 @@ const NavListItemLink = styled.a`
   }
 `;
 
-const Navigation = (): JSX.Element => {
+interface Props {
+  readonly loginTeamName: string;
+}
+const Navigation: React.FC<Props> = ({ loginTeamName }) => {
   return (
     <header>
       <Nav>
@@ -58,7 +61,7 @@ const Navigation = (): JSX.Element => {
         </Title>
         <NavList>
           <NavListItem>
-            <NavListItemLink href="/">チームA</NavListItemLink>
+            <NavListItemLink href="/">{loginTeamName}</NavListItemLink>
           </NavListItem>
           <NavListItem>
             <NavListItemLink href="/score">スコア入力</NavListItemLink>
