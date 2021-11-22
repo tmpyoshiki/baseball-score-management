@@ -17,7 +17,6 @@ const IndexInformation = (): JSX.Element => {
             <li>
               <a href="/games/game3">チームA 4 - 20 チームC</a>
             </li>
-            <li></li>
           </ol>
         </section>
         <section>

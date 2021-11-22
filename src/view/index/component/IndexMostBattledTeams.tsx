@@ -20,46 +20,6 @@ const IndexInformation = (): JSX.Element => {
           </li>
         </ul>
       </article>
-      <article>
-        <h1>最近の対戦戦績</h1>
-        <ul>
-          <li>
-            <dt>
-              <a href="/teams/teamA">チームA</a>vs
-              <a href="/teams/teamC">チームC</a>
-            </dt>
-            <dd>
-              <a href="/games/game1">9-2</a>
-            </dd>
-          </li>
-          <li>
-            <dt>
-              <a href="/teams/teamA">チームA</a>vs
-              <a href="/teams/teamC">チームC</a>
-            </dt>
-            <dd>
-              <a href="/games/game1">9-2</a>
-            </dd>
-          </li>
-          <li>
-            <dt>
-              <a href="/teams/teamA">チームA</a>vs
-              <a href="/teams/teamC">チームC</a>
-            </dt>
-            <dd>
-              <a href="/games/game1">9-2</a>
-            </dd>
-          </li>
-          <li>
-            <a href="/teams/me">もっと見る</a>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <a href="/teams/me">もっと見る</a>
-          </li>
-        </ul>
-      </article>
     </React.Fragment>
   );
 };
