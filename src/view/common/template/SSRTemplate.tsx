@@ -3,15 +3,16 @@ import Header from '../component/Header';
 import Navigation from '../component/Navigation';
 
 interface Props {
-    readonly mainComponent: JSX.Element
+  readonly mainComponent: JSX.Element;
 }
-const SSR: React.FC<Props> = ({mainComponent}) => (
+const SSR: React.FC<Props> = ({ mainComponent }) => (
   <html>
-    <Header title="test"/>
+    <Header title="test" />
     <body>
       <div id="app">
-          <Navigation />
-          <div>{mainComponent}</div>
+      <Navigation />
+        <Navigation />
+        <div>{mainComponent}</div>
       </div>
       <script src="./client.js"></script>
     </body>
