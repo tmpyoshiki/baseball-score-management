@@ -1,5 +1,3 @@
-import { createStore } from "redux";
-
 export interface IndexState {
   readonly latestGameScores: LatestGameScores;
   readonly frequentBattledTeams: FrequentBattledTeams;
@@ -31,6 +29,4 @@ const initialState: IndexState = {
   },
 };
 
-const reducer = (state: IndexState = initialState) => state;
-
-export default createStore(reducer);
+export default (state: IndexState = initialState) => state;
