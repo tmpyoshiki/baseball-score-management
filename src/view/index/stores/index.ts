@@ -1,4 +1,5 @@
-import { combineReducers } from "redux";
+import { createStore } from "redux";
+
 interface IndexState {
   readonly latestGameScores: LatestGameScores;
   readonly frequentBattledTeams: FrequentBattledTeams;
@@ -28,6 +29,6 @@ const initialState: IndexState = {
   },
 };
 
-const indexReducer = (state: IndexState = initialState) => state;
+const reducer = (state: IndexState = initialState) => state;
 
-export default combineReducers({ indexReducer });
+export default createStore(reducer);
