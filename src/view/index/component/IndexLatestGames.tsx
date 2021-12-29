@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { IndexState } from "../stores";
 
 const LatestGamesWrapper = styled.article`
   width: 300px;
@@ -56,26 +58,20 @@ const DetailActionLink = styled.a`
   color: #0000ee;
 `;
 
-const IndexLatestGames = (): JSX.Element => {
+const IndexLatestGames: React.FC = () => {
+  const { scores } = useSelector((state: IndexState) => state.latestGameScores);
   return (
     <LatestGamesWrapper>
       <Title>対戦戦績</Title>
       <GameList>
-        <GameListItem>
-          <GameListItemLink href="/games/game1">
-            チームA 9 - 0 チームB
-          </GameListItemLink>
-        </GameListItem>
-        <GameListItem>
-          <GameListItemLink href="/games/game2">
-            チームA 10 - 3 チームC
-          </GameListItemLink>
-        </GameListItem>
-        <GameListItem>
-          <GameListItemLink href="/games/game3">
-            チームA 4 - 20 チームC
-          </GameListItemLink>
-        </GameListItem>
+        {scores.map((score) => (
+          <GameListItem>
+            <GameListItemLink href={`/games/${score.gameId}`}>
+              ${score.myTeamName} ${score.myTeamScore} - $
+              {score.oponentTeamName} ${score.oponentTeamScore}
+            </GameListItemLink>
+          </GameListItem>
+        ))}
       </GameList>
       <DetailActions>
         <p>

@@ -5,12 +5,13 @@ export interface IndexState {
   readonly frequentBattledTeams: FrequentBattledTeams;
 }
 export interface LatestGameScores {
-  readonly scores: ReadonlyArray<Score>;
+  readonly scores: ReadonlyArray<GameScore>;
 }
 export interface FrequentBattledTeams {
   readonly teams: ReadonlyArray<BattledTeam>;
 }
-interface Score {
+interface GameScore {
+  readonly gameId: string;
   readonly myTeamName: string;
   readonly myTeamScore: number;
   readonly oponentTeamName: string;

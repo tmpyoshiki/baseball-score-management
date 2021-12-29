@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { FrequentBattledTeams, IndexState } from "../stores";
+import { IndexState } from "../stores";
 
 const IndexFrequentBattledTeamsWrapper = styled.article`
   width: 300px;
