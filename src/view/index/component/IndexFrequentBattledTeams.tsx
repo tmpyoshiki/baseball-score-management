@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { FrequentBattledTeams, IndexState } from "../stores";
 
 const IndexFrequentBattledTeamsWrapper = styled.article`
   width: 300px;
@@ -55,19 +57,20 @@ const MoreLink = styled.a`
 `;
 
 const IndexFrequentBattledTeams = (): JSX.Element => {
+  const { teams } = useSelector(
+    (state: IndexState) => state.frequentBattledTeams
+  );
   return (
     <IndexFrequentBattledTeamsWrapper>
       <Title>最も対戦しているチーム</Title>
       <TeamList>
-        <TeamListItem>
-          <TeamListItemLink href="/teams/teamB">チームB</TeamListItemLink>
-        </TeamListItem>
-        <TeamListItem>
-          <TeamListItemLink href="/teams/teamC">チームC</TeamListItemLink>
-        </TeamListItem>
-        <TeamListItem>
-          <TeamListItemLink href="/teams/teamD">チームD</TeamListItemLink>
-        </TeamListItem>
+        {teams.map((team) => (
+          <TeamListItem>
+            <TeamListItemLink href={`teams/${team.teamId}`}>
+              ${team.teamName}
+            </TeamListItemLink>
+          </TeamListItem>
+        ))}
       </TeamList>
       <More>
         <MoreLink href="/teams">もっと見る</MoreLink>

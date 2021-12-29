@@ -1,11 +1,14 @@
 import { createStore } from "redux";
 
-interface IndexState {
+export interface IndexState {
   readonly latestGameScores: LatestGameScores;
   readonly frequentBattledTeams: FrequentBattledTeams;
 }
-interface LatestGameScores {
+export interface LatestGameScores {
   readonly scores: ReadonlyArray<Score>;
+}
+export interface FrequentBattledTeams {
+  readonly teams: ReadonlyArray<BattledTeam>;
 }
 interface Score {
   readonly myTeamName: string;
@@ -13,10 +16,8 @@ interface Score {
   readonly oponentTeamName: string;
   readonly oponentTeamScore: number;
 }
-interface FrequentBattledTeams {
-  readonly teams: ReadonlyArray<BattledTeam>;
-}
 interface BattledTeam {
+  readonly teamId: string;
   readonly teamName: string;
 }
 
