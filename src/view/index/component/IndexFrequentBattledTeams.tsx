@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const MostBattledTeamsWrapper = styled.article`
+const IndexFrequentBattledTeamsWrapper = styled.article`
   width: 300px;
   margin-top: 50px;
   background: #ffffff;
@@ -54,9 +54,9 @@ const MoreLink = styled.a`
   color: #0000ee;
 `;
 
-const IndexMostBattledTeams = (): JSX.Element => {
+const IndexFrequentBattledTeams = (): JSX.Element => {
   return (
-    <MostBattledTeamsWrapper>
+    <IndexFrequentBattledTeamsWrapper>
       <Title>最も対戦しているチーム</Title>
       <TeamList>
         <TeamListItem>
@@ -72,7 +72,7 @@ const IndexMostBattledTeams = (): JSX.Element => {
       <More>
         <MoreLink href="/teams">もっと見る</MoreLink>
       </More>
-    </MostBattledTeamsWrapper>
+    </IndexFrequentBattledTeamsWrapper>
   );
 };
-export default IndexMostBattledTeams;
+export default IndexFrequentBattledTeams;
