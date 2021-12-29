@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { IndexState } from "../stores";
 
-const MostBattledTeamsWrapper = styled.article`
+const IndexFrequentBattledTeamsWrapper = styled.article`
   width: 300px;
   margin-top: 50px;
   background: #ffffff;
@@ -54,25 +56,26 @@ const MoreLink = styled.a`
   color: #0000ee;
 `;
 
-const IndexMostBattledTeams = (): JSX.Element => {
+const IndexFrequentBattledTeams = (): JSX.Element => {
+  const { teams } = useSelector(
+    (state: IndexState) => state.frequentBattledTeams
+  );
   return (
-    <MostBattledTeamsWrapper>
+    <IndexFrequentBattledTeamsWrapper>
       <Title>最も対戦しているチーム</Title>
       <TeamList>
-        <TeamListItem>
-          <TeamListItemLink href="/teams/teamB">チームB</TeamListItemLink>
-        </TeamListItem>
-        <TeamListItem>
-          <TeamListItemLink href="/teams/teamC">チームC</TeamListItemLink>
-        </TeamListItem>
-        <TeamListItem>
-          <TeamListItemLink href="/teams/teamD">チームD</TeamListItemLink>
-        </TeamListItem>
+        {teams.map((team) => (
+          <TeamListItem>
+            <TeamListItemLink href={`teams/${team.teamId}`}>
+              ${team.teamName}
+            </TeamListItemLink>
+          </TeamListItem>
+        ))}
       </TeamList>
       <More>
         <MoreLink href="/teams">もっと見る</MoreLink>
       </More>
-    </MostBattledTeamsWrapper>
+    </IndexFrequentBattledTeamsWrapper>
   );
 };
-export default IndexMostBattledTeams;
+export default IndexFrequentBattledTeams;

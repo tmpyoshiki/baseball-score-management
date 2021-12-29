@@ -1,5 +1,5 @@
 import React from "react";
-import IndexMostBattledTeams from "./IndexMostBattledTeams";
+import IndexFrequentBattledTeams from "./IndexFrequentBattledTeams";
 import IndexLatestGames from "./IndexLatestGames";
 import styled from "styled-components";
 
@@ -18,7 +18,7 @@ const IndexInformation = (): JSX.Element => {
   return (
     <Information>
       <HiddenH1>管理しているチーム情報の概要</HiddenH1>
-      <IndexMostBattledTeams />
+      <IndexFrequentBattledTeams />
       <IndexLatestGames />
     </Information>
   );
