@@ -1,7 +1,7 @@
-import React from "react";
-import IndexFrequentBattledTeams from "./IndexFrequentBattledTeams";
-import IndexLatestGames from "./IndexLatestGames";
-import styled from "styled-components";
+import React from 'react';
+import IndexFrequentBattledTeams from './IndexFrequentBattledTeams';
+import IndexLatestGames from './IndexLatestGames';
+import styled from 'styled-components';
 
 const HiddenH1 = styled.h1`
   display: none;

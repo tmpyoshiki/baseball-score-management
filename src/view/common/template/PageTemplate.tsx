@@ -1,5 +1,5 @@
-import React from "react";
-import Head from "../component/Head";
+import React from 'react';
+import Head from '../component/Head';
 
 interface Props {
   readonly pageName: string;
