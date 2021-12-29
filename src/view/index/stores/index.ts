@@ -1,23 +1,23 @@
 export interface IndexState {
-  readonly latestGameScores: LatestGameScores;
-  readonly frequentBattledTeams: FrequentBattledTeams;
+  readonly latestGameScores: LatestGameScores
+  readonly frequentBattledTeams: FrequentBattledTeams
 }
 export interface LatestGameScores {
-  readonly scores: ReadonlyArray<GameScore>;
+  readonly scores: ReadonlyArray<GameScore>
 }
 export interface FrequentBattledTeams {
-  readonly teams: ReadonlyArray<BattledTeam>;
+  readonly teams: ReadonlyArray<BattledTeam>
 }
 interface GameScore {
-  readonly gameId: string;
-  readonly myTeamName: string;
-  readonly myTeamScore: number;
-  readonly oponentTeamName: string;
-  readonly oponentTeamScore: number;
+  readonly gameId: string
+  readonly myTeamName: string
+  readonly myTeamScore: number
+  readonly oponentTeamName: string
+  readonly oponentTeamScore: number
 }
 interface BattledTeam {
-  readonly teamId: string;
-  readonly teamName: string;
+  readonly teamId: string
+  readonly teamName: string
 }
 
 const initialState: IndexState = {
@@ -27,6 +27,6 @@ const initialState: IndexState = {
   frequentBattledTeams: {
     teams: [],
   },
-};
+}
 
-export default (state: IndexState = initialState) => state;
+export default (state: IndexState = initialState) => state
