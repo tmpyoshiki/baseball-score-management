@@ -11,6 +11,5 @@ app.use(express.static('dist/assets'));
 app.get('/', (req, res) => {
   const controller = container.get<IndexController>('IndexController');
   const view = controller.get();
-  console.log(view);
   res.send(view);
 });
