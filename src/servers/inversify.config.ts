@@ -4,6 +4,8 @@ import IndexController from './interface/Index/IndexController';
 
 const container = new Container();
 
-container.bind<IndexController>('IndexController').to(IndexController);
+container
+  .bind<IndexController>(DIContainerTypes.IndexController)
+  .to(IndexController);
 
 export default container;
