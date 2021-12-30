@@ -1,6 +1,7 @@
-import { renderToString } from 'react-dom/server';
 import express, { Express } from 'express';
-import IndexView from './view/index/IndexView';
+import IndexController from './servers/interface/Index/IndexController';
+import DIContainer from './servers/DIContainer';
+import DIContainerTypes from './servers/DIContainer.types';
 
 const app: Express = express();
 
@@ -9,5 +10,9 @@ app.listen(3000);
 app.use(express.static('dist/assets'));
 
 app.get('/', (req, res) => {
-  res.send(renderToString(IndexView()));
+  const controller = DIContainer.get<IndexController>(
+    DIContainerTypes.IndexController
+  );
+  const view = controller.get();
+  res.send(view).status(200);
 });
