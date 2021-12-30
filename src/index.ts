@@ -1,7 +1,7 @@
 import express, { Express } from 'express';
 import IndexController from './servers/interface/Index/IndexController';
-import container from './servers/inversify.config';
-import DIContainerTypes from './servers/inversify.config.type';
+import DIContainer from './servers/DIContainer';
+import DIContainerTypes from './servers/DIContainer.types';
 
 const app: Express = express();
 
@@ -10,9 +10,9 @@ app.listen(3000);
 app.use(express.static('dist/assets'));
 
 app.get('/', (req, res) => {
-  const controller = container.get<IndexController>(
+  const controller = DIContainer.get<IndexController>(
     DIContainerTypes.IndexController
   );
   const view = controller.get();
-  res.send(view);
+  res.send(view).status(200);
 });
