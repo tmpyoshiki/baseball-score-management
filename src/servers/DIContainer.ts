@@ -1,5 +1,5 @@
 import { Container } from 'inversify';
-import DIContainerTypes from './inversify.config.type';
+import DIContainerTypes from './DIContainer.types';
 import IndexController from './interface/Index/IndexController';
 
 const container = new Container();
