@@ -9,10 +9,10 @@ const createPageView = ({
   content,
   state,
 }: {
-  readonly pageName: string;
-  readonly title: string;
-  readonly content: string;
-  readonly state: unknown;
+  pageName: string;
+  title: string;
+  content: string;
+  state: unknown;
 }): string => {
   return `<html>
       ${renderToString(<Head title={title} />)}
