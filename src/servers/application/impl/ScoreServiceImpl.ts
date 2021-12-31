@@ -1,9 +1,9 @@
 import { injectable } from 'inversify';
 import Score from '../../domain/Scores/Score';
-import { ScoresService } from './../interface/ScoresService';
+import ScoresService from './../interface/ScoresService';
 
 @injectable()
-export class ScoresServiceImpl implements ScoresService {
+export default class ScoresServiceImpl implements ScoresService {
   public getScores(start: number, resultsNum: number): ReadonlyArray<Score> {
     // TODO: repository追加したら修正
     return [];
