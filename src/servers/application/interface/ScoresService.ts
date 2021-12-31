@@ -1,5 +1,5 @@
-import ScoreList from '../../domain/ScoreList';
+import Score from '../../domain/Scores/Score';
 
 export interface ScoresService {
-  getScores(start: number, resultsNum: number): ScoreList;
+  getScores(start: number, resultsNum: number): ReadonlyArray<Score>;
 }
