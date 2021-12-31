@@ -4,7 +4,7 @@ import Navigation from '../../common/component/Navigation';
 import IndexTop from './IndexTop';
 import IndexInformation from './IndexInformation';
 
-const IndexMainComponent = (): JSX.Element => {
+const IndexMainComponent: React.FC = () => {
   return (
     <React.Fragment>
       <Reset />

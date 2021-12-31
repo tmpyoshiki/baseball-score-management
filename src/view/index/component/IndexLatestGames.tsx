@@ -65,10 +65,10 @@ const IndexLatestGames: React.FC = () => {
       <Title>対戦戦績</Title>
       <GameList>
         {scores.map((score) => (
-          <GameListItem>
+          <GameListItem key={score.gameId}>
             <GameListItemLink href={`/games/${score.gameId}`}>
-              ${score.myTeamName} ${score.myTeamScore} - $
-              {score.oponentTeamName} ${score.oponentTeamScore}
+              {score.myTeamName} {score.myTeamScore} - {score.oponentTeamScore}{' '}
+              {score.oponentTeamName}
             </GameListItemLink>
           </GameListItem>
         ))}

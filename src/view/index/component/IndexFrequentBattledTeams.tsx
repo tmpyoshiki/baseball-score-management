@@ -65,9 +65,9 @@ const IndexFrequentBattledTeams = (): JSX.Element => {
       <Title>最も対戦しているチーム</Title>
       <TeamList>
         {teams.map((team) => (
-          <TeamListItem>
+          <TeamListItem key={team.teamId}>
             <TeamListItemLink href={`teams/${team.teamId}`}>
-              ${team.teamName}
+              {team.teamName}
             </TeamListItemLink>
           </TeamListItem>
         ))}
