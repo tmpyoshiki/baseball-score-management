@@ -1,14 +1,13 @@
-import { IndexState } from './../../../view/index/stores/index';
 import 'reflect-metadata';
-import ScoresService from './../../application/interface/ScoresService';
 import { inject, injectable } from 'inversify';
-import { renderToString } from 'react-dom/server';
+import reducer, { IndexState } from './../../../view/index/stores/index';
+import ScoresService from './../../application/interface/ScoresService';
 import DIContainerTypes from '../../DIContainer.types';
 import TeamsService from '../../application/interface/TeamsService';
 import Score from '../../domain/Scores/Score';
 import Team from '../../domain/Teams/Team';
-import IndexView from '../../../view/index/IndexView';
-import createIndexView from '../../../view/index/IndexView';
+import createPageView from '../../../view/common/helper/createPageView';
+import IndexMainComponent from '../../../view/index/component/IndexMainComponent';
 
 @injectable()
 export default class IndexController {
@@ -22,7 +21,7 @@ export default class IndexController {
     const scores = this.scoresService.getScores(1, 3);
     const teams = this.teamsService.getTeams(1, 3);
     const state = this.createState(scores, teams);
-    return createIndexView({ state });
+    return this.createIndexView(state);
   }
 
   private createState(
@@ -46,5 +45,15 @@ export default class IndexController {
         })),
       },
     };
+  }
+
+  private createIndexView(state: object): string {
+    return createPageView({
+      pageName: 'index',
+      title: 'BMW - 野球スコア管理ツール',
+      content: IndexMainComponent,
+      reducer,
+      state,
+    });
   }
 }
