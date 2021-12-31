@@ -1,16 +1,14 @@
-import {
-  IndexState,
-  FrequentBattledTeams,
-} from './../../../view/index/stores/index';
+import { IndexState } from './../../../view/index/stores/index';
 import 'reflect-metadata';
 import ScoresService from './../../application/interface/ScoresService';
 import { inject, injectable } from 'inversify';
 import { renderToString } from 'react-dom/server';
-import IndexView from '../../../view/index/IndexView';
 import DIContainerTypes from '../../DIContainer.types';
 import TeamsService from '../../application/interface/TeamsService';
 import Score from '../../domain/Scores/Score';
 import Team from '../../domain/Teams/Team';
+import IndexView from '../../../view/index/IndexView';
+import createIndexView from '../../../view/index/IndexView';
 
 @injectable()
 export default class IndexController {
@@ -23,8 +21,8 @@ export default class IndexController {
   public get() {
     const scores = this.scoresService.getScores(1, 3);
     const teams = this.teamsService.getTeams(1, 3);
-    const indexState = this.createState(scores, teams);
-    return renderToString(IndexView());
+    const state = this.createState(scores, teams);
+    return createIndexView({ state });
   }
 
   private createState(
