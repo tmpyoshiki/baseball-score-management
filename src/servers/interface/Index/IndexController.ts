@@ -13,12 +13,10 @@ import { View } from '../../../view/common/View';
 
 @injectable()
 export default class IndexController {
-  constructor(
-    @inject(DIContainerTypes.ScoresService)
-    private readonly scoresService: ScoresService,
-    @inject(DIContainerTypes.TeamsService)
-    private readonly teamsService: TeamsService
-  ) {}
+  @inject(DIContainerTypes.ScoresService)
+  private readonly scoresService: ScoresService;
+  @inject(DIContainerTypes.TeamsService)
+  private readonly teamsService: TeamsService;
 
   public async get() {
     const fetchScores = this.scoresService.getScores(1, 3);
@@ -26,7 +24,8 @@ export default class IndexController {
     const [scores, teams] = await Promise.all([fetchScores, fetchTeams]);
     // TODO とりあえず投げるけど、本来ならトルツメがよさそう。
     if (teams instanceof Error) {
-      throw Error();
+      console.warn(teams.message);
+      throw teams;
     }
     const state = this.createState(scores, teams);
     const store = createIndexStore(state);

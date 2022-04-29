@@ -6,10 +6,8 @@ import BMSAPILibrary from '../library/interface/BMSAPILibrary';
 
 @injectable()
 export default class TeamsRepositoryImpl implements TeamsRepository {
-  constructor(
-    @inject(DIContainerTypes.BMSAPILibrary)
-    private readonly BMSAPILibray: BMSAPILibrary
-  ) {}
+  @inject(DIContainerTypes.BMSAPILibrary)
+  private readonly BMSAPILibray: BMSAPILibrary;
 
   public async getTeams(
     start: number,
