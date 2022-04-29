@@ -4,8 +4,8 @@ import reducer, { IndexState } from './../../../view/index/stores/index';
 import ScoresService from './../../application/interface/ScoresService';
 import DIContainerTypes from '../../DIContainer.types';
 import TeamsService from '../../application/interface/TeamsService';
-import Score from '../../domain/Scores/Score';
-import Team from '../../domain/Teams/Team';
+import Score from '../../domain/model/Scores/Score';
+import Team from '../../domain/model/Teams/Team';
 import createPageView from '../../../view/common/helper/createPageView';
 import IndexMainComponent from '../../../view/index/component/IndexMainComponent';
 
