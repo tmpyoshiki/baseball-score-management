@@ -13,10 +13,12 @@ import { View } from '../../../view/common/View';
 
 @injectable()
 export default class IndexController {
-  @inject(DIContainerTypes.ScoresService)
-  private readonly scoresService: ScoresService;
-  @inject(DIContainerTypes.TeamsService)
-  private readonly teamsService: TeamsService;
+  constructor(
+    @inject(DIContainerTypes.ScoresService)
+    private readonly scoresService: ScoresService,
+    @inject(DIContainerTypes.TeamsService)
+    private readonly teamsService: TeamsService
+  ) {}
 
   public async get() {
     const fetchScores = this.scoresService.getScores(0, 3);
