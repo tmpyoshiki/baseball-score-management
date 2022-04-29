@@ -19,8 +19,8 @@ export default class IndexController {
   private readonly teamsService: TeamsService;
 
   public async get() {
-    const fetchScores = this.scoresService.getScores(1, 3);
-    const fetchTeams = this.teamsService.getTeams(1, 3);
+    const fetchScores = this.scoresService.getScores(0, 3);
+    const fetchTeams = this.teamsService.getTeams(0, 3);
     const [scores, teams] = await Promise.all([fetchScores, fetchTeams]);
     // TODO とりあえず投げるけど、本来ならトルツメがよさそう。
     if (teams instanceof Error) {
