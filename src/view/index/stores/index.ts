@@ -19,7 +19,7 @@ interface GameScore {
   readonly oponentTeamScore: number;
 }
 interface BattledTeam {
-  readonly teamId: string;
+  readonly teamId: number;
   readonly teamName: string;
 }
 

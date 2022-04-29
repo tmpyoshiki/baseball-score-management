@@ -1,13 +1,13 @@
 export default class Team {
-  private teamId: string;
+  private teamId: number;
   private teamName: string;
 
-  constructor(teamId: string, teamName: string) {
+  constructor(teamId: number, teamName: string) {
     this.teamId = teamId;
     this.teamName = teamName;
   }
 
-  public getTeamId(): string {
+  public getTeamId(): number {
     return this.teamId;
   }
   public getTeamName(): string {
