@@ -20,9 +20,14 @@ export default class IndexController {
     private readonly teamsService: TeamsService
   ) {}
 
-  public get() {
-    const scores = this.scoresService.getScores(1, 3);
-    const teams = this.teamsService.getTeams(1, 3);
+  public async get() {
+    const fetchScores = this.scoresService.getScores(1, 3);
+    const fetchTeams = this.teamsService.getTeams(1, 3);
+    const [scores, teams] = await Promise.all([fetchScores, fetchTeams]);
+    // TODO とりあえず投げるけど、本来ならトルツメがよさそう。
+    if (teams instanceof Error) {
+      throw Error();
+    }
     const state = this.createState(scores, teams);
     const store = createIndexStore(state);
     return new View({
