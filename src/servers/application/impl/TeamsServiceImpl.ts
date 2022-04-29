@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import Team from '../../domain/Teams/Team';
+import Team from '../../domain/model/Teams/Team';
 import TeamsService from '../interface/TeamsService';
 
 @injectable()

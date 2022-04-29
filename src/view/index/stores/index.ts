@@ -1,3 +1,6 @@
+import { applyMiddleware, compose, createStore } from 'redux';
+import reduxThunk from 'redux-thunk';
+
 export interface IndexState {
   readonly latestGameScores: LatestGameScores;
   readonly frequentBattledTeams: FrequentBattledTeams;
@@ -29,4 +32,14 @@ const initialState: IndexState = {
   },
 };
 
-export default (state: IndexState = initialState) => state;
+const composeEnhancers =
+  typeof window !== 'undefined'
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : compose;
+
+export default (state: IndexState = initialState) =>
+  createStore(
+    (state) => state,
+    state,
+    composeEnhancers(applyMiddleware(reduxThunk))
+  );
