@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import Score from '../../domain/Scores/Score';
+import Score from '../../domain/model/Scores/Score';
 import ScoresService from './../interface/ScoresService';
 
 @injectable()
