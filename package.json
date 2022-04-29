@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node -r esm dist/index.js",
-    "build": "babel src -x '.ts,.tsx' -d dist && webpack --mode development",
+    "start": "yarn build && node -r esm dist/index.js",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && babel src -x '.ts,.tsx' -d dist && webpack --mode development",
     "test-unit": "jest"
   },
   "license": "MIT",
