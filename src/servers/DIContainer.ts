@@ -6,6 +6,8 @@ import DIContainerTypes from './DIContainer.types';
 import IndexController from './interface/Index/IndexController';
 import TeamsService from './application/interface/TeamsService';
 import TeamsServiceImpl from './application/impl/TeamsServiceImpl';
+import TeamsRepository from './domain/repository/TeamsRepository';
+import TeamsRepositoryImpl from './infrastracture/repository/TeamsRepositoryImpl';
 
 const container = new Container();
 
@@ -18,5 +20,8 @@ container
 container
   .bind<TeamsService>(DIContainerTypes.TeamsService)
   .to(TeamsServiceImpl);
+container
+  .bind<TeamsRepository>(DIContainerTypes.TeamsRepository)
+  .to(TeamsRepositoryImpl);
 
 export default container;
