@@ -11,7 +11,10 @@ export default class TeamsServiceImpl implements TeamsService {
     private readonly teamsRepository: TeamsRepository
   ) {}
 
-  public getTeams(start: number, resultsNum: number): ReadonlyArray<Team> {
-    return this.teamsRepository.getTeams(start, resultsNum);
+  public async getTeams(
+    start: number,
+    resultsNum: number
+  ): Promise<ReadonlyArray<Team> | Error> {
+    return await this.teamsRepository.getTeams(start, resultsNum);
   }
 }
