@@ -10,9 +10,8 @@ app.listen(3000);
 app.use(express.static('dist/assets'));
 
 app.get('/', (req, res) => {
-  const controller = DIContainer.get<IndexController>(
+  const view = DIContainer.get<IndexController>(
     DIContainerTypes.IndexController
-  );
-  const view = controller.get();
-  res.send(view).status(200);
+  ).get();
+  res.send(view.renderAsString()).status(200);
 });

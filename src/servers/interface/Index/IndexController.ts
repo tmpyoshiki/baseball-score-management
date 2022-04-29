@@ -1,27 +1,37 @@
 import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
-import reducer, { IndexState } from './../../../view/index/stores/index';
+import createIndexStore, {
+  IndexState,
+} from './../../../view/index/stores/index';
 import ScoresService from './../../application/interface/ScoresService';
 import DIContainerTypes from '../../DIContainer.types';
 import TeamsService from '../../application/interface/TeamsService';
 import Score from '../../domain/model/Scores/Score';
 import Team from '../../domain/model/Teams/Team';
-import createPageView from '../../../view/common/helper/createPageView';
 import IndexMainComponent from '../../../view/index/component/IndexMainComponent';
+import { View } from '../../../view/common/View';
 
 @injectable()
 export default class IndexController {
-  @inject(DIContainerTypes.ScoresService)
-  private scoresService: ScoresService;
-
-  @inject(DIContainerTypes.TeamsService)
-  private teamsService: TeamsService;
+  constructor(
+    @inject(DIContainerTypes.ScoresService)
+    private readonly scoresService: ScoresService,
+    @inject(DIContainerTypes.TeamsService)
+    private readonly teamsService: TeamsService
+  ) {}
 
   public get() {
     const scores = this.scoresService.getScores(1, 3);
     const teams = this.teamsService.getTeams(1, 3);
     const state = this.createState(scores, teams);
-    return this.createIndexView(state);
+    const store = createIndexStore(state);
+    return new View({
+      pageName: 'index',
+      title: 'BMW - 野球スコア管理ツール',
+      content: IndexMainComponent,
+      state,
+      store,
+    });
   }
 
   private createState(
@@ -45,15 +55,5 @@ export default class IndexController {
         })),
       },
     };
-  }
-
-  private createIndexView(state: object): string {
-    return createPageView({
-      pageName: 'index',
-      title: 'BMW - 野球スコア管理ツール',
-      content: IndexMainComponent,
-      reducer,
-      state,
-    });
   }
 }
