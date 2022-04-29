@@ -6,8 +6,10 @@ import TeamsService from '../interface/TeamsService';
 
 @injectable()
 export default class TeamsServiceImpl implements TeamsService {
-  @inject(DIContainerTypes.TeamsRepository)
-  private readonly teamsRepository: TeamsRepository;
+  constructor(
+    @inject(DIContainerTypes.TeamsRepository)
+    private readonly teamsRepository: TeamsRepository
+  ) {}
 
   public async getTeams(
     start: number,

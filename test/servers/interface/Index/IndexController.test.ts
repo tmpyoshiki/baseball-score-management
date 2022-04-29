@@ -24,7 +24,7 @@ const expectedState: IndexState = {
   frequentBattledTeams: {
     teams: [
       {
-        teamId: '2',
+        teamId: 2,
         teamName: 'チーム２',
       },
     ],
@@ -34,18 +34,19 @@ const expectedState: IndexState = {
 describe('IndexController', () => {
   describe('get', () => {
     const score = new Score('1', 'チーム１', 1, 'チーム２', 2);
-    const team = new Team('2', 'チーム２');
+    const team = new Team(2, 'チーム２');
 
     beforeEach(() => {
       jest.mocked(ScoresServiceImpl).mockImplementation(() => ({
-        getScores: () => [score],
+        getScores: () => Promise.resolve([score]),
       }));
       jest.mocked(TeamsServiceImpl).mockImplementation(() => ({
-        getTeams: () => [team],
+        teams
+        getTeams: () => Promise.resolve([team]),
       }));
     });
-    it('正常系: 正常に処理が実行されたときに正しいViewを返すことができること', () => {
-      const view = new IndexController(
+    it('正常系: 正常に処理が実行されたときに正しいViewを返すことができること', async () => {
+      const view = await new IndexController(
         new ScoresServiceImpl(),
         new TeamsServiceImpl()
       ).get();
