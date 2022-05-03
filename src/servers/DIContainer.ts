@@ -6,6 +6,10 @@ import DIContainerTypes from './DIContainer.types';
 import IndexController from './interface/Index/IndexController';
 import TeamsService from './application/interface/TeamsService';
 import TeamsServiceImpl from './application/impl/TeamsServiceImpl';
+import TeamsRepository from './domain/repository/TeamsRepository';
+import TeamsRepositoryImpl from './infrastracture/repository/TeamsRepositoryImpl';
+import BMSAPILibrary from './infrastracture/library/interface/BMSAPILibrary';
+import BMSAPILibraryImpl from './infrastracture/library/impl/BMSAPILibraryImpl';
 
 const container = new Container();
 
@@ -18,5 +22,11 @@ container
 container
   .bind<TeamsService>(DIContainerTypes.TeamsService)
   .to(TeamsServiceImpl);
+container
+  .bind<TeamsRepository>(DIContainerTypes.TeamsRepository)
+  .to(TeamsRepositoryImpl);
+container
+  .bind<BMSAPILibrary>(DIContainerTypes.BMSAPILibrary)
+  .to(BMSAPILibraryImpl);
 
 export default container;

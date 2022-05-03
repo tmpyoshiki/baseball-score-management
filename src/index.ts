@@ -9,8 +9,8 @@ app.listen(3000);
 
 app.use(express.static('dist/assets'));
 
-app.get('/', (req, res) => {
-  const view = DIContainer.get<IndexController>(
+app.get('/', async (req, res) => {
+  const view = await DIContainer.get<IndexController>(
     DIContainerTypes.IndexController
   ).get();
   res.send(view.renderAsString()).status(200);

@@ -4,8 +4,11 @@ import ScoresService from './../interface/ScoresService';
 
 @injectable()
 export default class ScoresServiceImpl implements ScoresService {
-  public getScores(start: number, resultsNum: number): ReadonlyArray<Score> {
+  public async getScores(
+    start: number,
+    resultsNum: number
+  ): Promise<ReadonlyArray<Score>> {
     // TODO: repository追加したら修正
-    return [];
+    return Promise.resolve([]);
   }
 }

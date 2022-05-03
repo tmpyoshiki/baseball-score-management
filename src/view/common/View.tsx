@@ -33,14 +33,21 @@ export class View<T> {
   }
 
   private render(): JSX.Element {
+    const initialState = JSON.stringify(this.state)
+      .replace(/\u2028/g, '\\u2028')
+      .replace(/\u2029/g, '\\u2029');
     return (
       <html>
         <Head title={this.title} />
         <body>
           <div id="app">
-            <Provider store={this.store}>${this.content}</Provider>
+            <Provider store={this.store}>{this.content}</Provider>
           </div>
-          <script>window.INITIAL_STATE=${serialize(this.state)}</script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.INITIAL_STATE = ${initialState}`,
+            }}
+          ></script>
           <script src={`/${this.pageName}.js`}></script>
         </body>
       </html>
