@@ -23,19 +23,18 @@ export default class IndexController {
   public async get() {
     // TODO: ログインされたチームのIDを取得するようにする。
     const loggedInTeamId = 1;
-    const fetchScores = this.gamesService.getGamesByTeamId(
-      loggedInTeamId,
-      0,
-      3
-    );
+    const fetchGames = this.gamesService.getGamesByTeamId(loggedInTeamId, 0, 3);
     const fetchTeams = this.teamsService.getTeams(0, 3);
-    const [scores, teams] = await Promise.all([fetchScores, fetchTeams]);
+    const [games, teams] = await Promise.all([fetchGames, fetchTeams]);
     // TODO とりあえず投げるけど、本来ならトルツメがよさそう。
     if (teams instanceof Error) {
       console.warn(teams.message);
       throw teams;
     }
-    const state = this.createState(scores, teams);
+    if (games instanceof Error) {
+      throw games;
+    }
+    const state = this.createState(games, teams);
     const store = createIndexStore(state);
     return new View({
       pageName: 'index',

@@ -67,8 +67,8 @@ const IndexLatestGames: React.FC = () => {
         {games.map((game) => (
           <GameListItem key={game.gameId}>
             <GameListItemLink href={`/games/${game.gameId}`}>
-              {game.firstTeam} {game.firstTeamScore} - {game.secondTeam}
-              {game.secondTeam}
+              {game.firstTeam.teamName} {game.firstTeamScore} -{' '}
+              {game.secondTeamScore} {game.secondTeam.teamName}
             </GameListItemLink>
           </GameListItem>
         ))}
