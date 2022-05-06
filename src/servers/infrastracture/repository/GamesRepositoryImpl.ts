@@ -1,5 +1,7 @@
 import { inject, injectable } from 'inversify';
 import DIContainerTypes from '../../DIContainer.types';
+import Field from '../../domain/model/Fields/Field';
+import Game from '../../domain/model/Games/Game';
 import Team from '../../domain/model/Teams/Team';
 import GamesRepository from '../../domain/repository/GamesRepository';
 import BMSAPILibrary from '../library/interface/BMSAPILibrary';
@@ -15,7 +17,7 @@ export default class GamesRepositoryImpl implements GamesRepository {
     teamId: number,
     start: number,
     resultsNum: number
-  ): Promise<ReadonlyArray<object> | Error> {
+  ): Promise<ReadonlyArray<Game> | Error> {
     const gameListResponse = await this.BMSAPILibray.getGamesByTeamId(
       teamId,
       start,
@@ -26,9 +28,23 @@ export default class GamesRepositoryImpl implements GamesRepository {
     }
 
     return gameListResponse.game_list.map((gameResponse) => {
-      return gameResponse;
-      // TODO: GAMEクラスはちょっと考えなきゃいけないので修正する
-      //        return new Game(teamResponse.id, teamResponse.name)
+      const firstTeam = new Team(
+        gameResponse.first_team.id,
+        gameResponse.first_team.name
+      );
+      const secondTeam = new Team(
+        gameResponse.second_team.id,
+        gameResponse.second_team.name
+      );
+      const field = new Field(gameResponse.field.id, gameResponse.field.name);
+      return new Game(
+        gameResponse.id,
+        firstTeam,
+        secondTeam,
+        field,
+        gameResponse.start_date_time,
+        gameResponse.end_date_time
+      );
     });
   }
 }
