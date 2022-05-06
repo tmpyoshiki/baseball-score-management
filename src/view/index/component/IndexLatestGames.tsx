@@ -59,16 +59,16 @@ const DetailActionLink = styled.a`
 `;
 
 const IndexLatestGames: React.FC = () => {
-  const { scores } = useSelector((state: IndexState) => state.latestGameScores);
+  const { games } = useSelector((state: IndexState) => state.latestGames);
   return (
     <LatestGamesWrapper>
       <Title>対戦戦績</Title>
       <GameList>
-        {scores.map((score) => (
-          <GameListItem key={score.gameId}>
-            <GameListItemLink href={`/games/${score.gameId}`}>
-              {score.myTeamName} {score.myTeamScore} - {score.oponentTeamScore}{' '}
-              {score.oponentTeamName}
+        {games.map((game) => (
+          <GameListItem key={game.gameId}>
+            <GameListItemLink href={`/games/${game.gameId}`}>
+              {game.firstTeam} {game.firstTeamScore} - {game.secondTeam}
+              {game.secondTeam}
             </GameListItemLink>
           </GameListItem>
         ))}
