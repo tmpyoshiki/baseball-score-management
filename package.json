@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "yarn build && node -r esm dist/index.js",
-    "build": "set NODE_OPTIONS=--openssl-legacy-provider && babel src -x '.ts,.tsx' -d dist && webpack --mode development",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && babel src -x '.ts,.tsx' -d dist && webpack --mode development",
     "test-unit": "jest"
   },
   "license": "MIT",
