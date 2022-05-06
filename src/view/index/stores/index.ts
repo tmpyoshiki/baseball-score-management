@@ -2,30 +2,30 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import reduxThunk from 'redux-thunk';
 
 export interface IndexState {
-  readonly latestGameScores: LatestGameScores;
+  readonly latestGames: LatestGames;
   readonly frequentBattledTeams: FrequentBattledTeams;
 }
-export interface LatestGameScores {
-  readonly scores: ReadonlyArray<GameScore>;
+export interface LatestGames {
+  readonly games: ReadonlyArray<Game>;
 }
 export interface FrequentBattledTeams {
-  readonly teams: ReadonlyArray<BattledTeam>;
+  readonly teams: ReadonlyArray<Team>;
 }
-interface GameScore {
-  readonly gameId: string;
-  readonly myTeamName: string;
-  readonly myTeamScore: number;
-  readonly oponentTeamName: string;
-  readonly oponentTeamScore: number;
+interface Game {
+  readonly gameId: number;
+  readonly firstTeam: Team;
+  readonly firstTeamScore: number;
+  readonly secondTeam: Team;
+  readonly secondTeamScore: number;
 }
-interface BattledTeam {
+interface Team {
   readonly teamId: number;
   readonly teamName: string;
 }
 
 const initialState: IndexState = {
-  latestGameScores: {
-    scores: [],
+  latestGames: {
+    games: [],
   },
   frequentBattledTeams: {
     teams: [],
