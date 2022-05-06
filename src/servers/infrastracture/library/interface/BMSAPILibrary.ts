@@ -1,3 +1,4 @@
+import { GameListResponse } from '../../response/GamesResponse';
 import { TeamListResponse } from '../../response/TeamsResponse';
 
 export default interface BMSAPILibrary {
@@ -10,4 +11,16 @@ export default interface BMSAPILibrary {
     start: number,
     resultsNum: number
   ): Promise<TeamListResponse | Error>;
+
+  /**
+   * 試合一覧を取得するメソッド
+   * @param teamId 取得するチームのID
+   * @param start 開始位置
+   * @param resultsNum 取得数
+   */
+  getGamesByTeamId(
+    teamId: number,
+    start: number,
+    resultsNum: number
+  ): Promise<GameListResponse | Error>;
 }

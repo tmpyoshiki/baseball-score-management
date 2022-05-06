@@ -11,7 +11,7 @@ export interface TeamListResponse {
 /**
  * チームのレスポンス
  */
-interface TeamResponse {
+export interface TeamResponse {
   /**
    * チームID
    */
