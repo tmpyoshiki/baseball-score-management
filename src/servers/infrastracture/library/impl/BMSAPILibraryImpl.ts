@@ -1,13 +1,5 @@
-import { serialize } from 'serialize-javascript';
 import { injectable } from 'inversify';
-import DIContainerTypes from '../../../DIContainer.types';
-import Team from '../../../domain/model/Teams/Team';
-import TeamsRepository from '../../../domain/repository/TeamsRepository';
-import axios, {
-  AxiosError,
-  AxiosRequestConfig,
-  AxiosRequestHeaders,
-} from 'axios';
+import axios, { AxiosError, AxiosRequestHeaders } from 'axios';
 import { Result, Failure, Success } from '../type/Results';
 import BMSAPILibrary from '../interface/BMSAPILibrary';
 
