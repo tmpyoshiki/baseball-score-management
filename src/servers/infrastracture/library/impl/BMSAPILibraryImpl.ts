@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import axios, { AxiosError, AxiosRequestHeaders } from 'axios';
 import { Result, Failure, Success } from '../type/Results';
 import BMSAPILibrary from '../interface/BMSAPILibrary';
+import { TeamListResponse } from '../../response/TeamsResponse';
 
 // TODO configに記載するように修正する
 const axiosClient = axios.create({
