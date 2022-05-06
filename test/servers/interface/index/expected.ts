@@ -1,14 +1,20 @@
 import { IndexState } from '../../../../src/view/index/stores';
 
 export const expectedState: IndexState = {
-  latestGameScores: {
-    scores: [
+  latestGames: {
+    games: [
       {
-        gameId: '1',
-        myTeamName: 'チーム１',
-        myTeamScore: 1,
-        oponentTeamName: 'チーム２',
-        oponentTeamScore: 2,
+        gameId: 1,
+        firstTeam: {
+          teamId: 1,
+          teamName: 'チーム1',
+        },
+        firstTeamScore: 1,
+        secondTeam: {
+          teamId: 2,
+          teamName: 'チーム2',
+        },
+        secondTeamScore: 1,
       },
     ],
   },
