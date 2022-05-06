@@ -1,15 +1,9 @@
-import { serialize } from 'serialize-javascript';
 import { injectable } from 'inversify';
-import DIContainerTypes from '../../../DIContainer.types';
-import Team from '../../../domain/model/Teams/Team';
-import TeamsRepository from '../../../domain/repository/TeamsRepository';
-import axios, {
-  AxiosError,
-  AxiosRequestConfig,
-  AxiosRequestHeaders,
-} from 'axios';
+import axios, { AxiosError, AxiosRequestHeaders } from 'axios';
 import { Result, Failure, Success } from '../type/Results';
 import BMSAPILibrary from '../interface/BMSAPILibrary';
+import { TeamListResponse } from '../../response/TeamsResponse';
+import { GameListResponse } from '../../response/GamesResponse';
 
 // TODO configに記載するように修正する
 const axiosClient = axios.create({
@@ -39,6 +33,16 @@ export default class BMSAPILibraryImpl implements BMSAPILibrary {
     const requestPath = '/teams';
     const params = { start, results: resultsNum };
     return await this.getClient<TeamListResponse>({ requestPath, params });
+  }
+
+  public async getGamesByTeamId(
+    teamId: number,
+    start: number,
+    resultsNum: number
+  ): Promise<GameListResponse | Error> {
+    const requestPath = `/teams/${teamId}/games`;
+    const params = { start, results: resultsNum };
+    return await this.getClient<GameListResponse>({ requestPath, params });
   }
 
   /**

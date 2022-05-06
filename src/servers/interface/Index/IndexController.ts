@@ -3,33 +3,38 @@ import { inject, injectable } from 'inversify';
 import createIndexStore, {
   IndexState,
 } from './../../../view/index/stores/index';
-import ScoresService from './../../application/interface/ScoresService';
 import DIContainerTypes from '../../DIContainer.types';
 import TeamsService from '../../application/interface/TeamsService';
-import Score from '../../domain/model/Scores/Score';
 import Team from '../../domain/model/Teams/Team';
 import IndexMainComponent from '../../../view/index/component/IndexMainComponent';
 import { View } from '../../../view/common/View';
+import GamesService from '../../application/interface/GamesService';
+import Game from '../../domain/model/Games/Game';
 
 @injectable()
 export default class IndexController {
   constructor(
-    @inject(DIContainerTypes.ScoresService)
-    private readonly scoresService: ScoresService,
+    @inject(DIContainerTypes.GamesService)
+    private readonly gamesService: GamesService,
     @inject(DIContainerTypes.TeamsService)
     private readonly teamsService: TeamsService
   ) {}
 
   public async get() {
-    const fetchScores = this.scoresService.getScores(0, 3);
+    // TODO: ログインされたチームのIDを取得するようにする。
+    const loggedInTeamId = 1;
+    const fetchGames = this.gamesService.getGamesByTeamId(loggedInTeamId, 0, 3);
     const fetchTeams = this.teamsService.getTeams(0, 3);
-    const [scores, teams] = await Promise.all([fetchScores, fetchTeams]);
+    const [games, teams] = await Promise.all([fetchGames, fetchTeams]);
     // TODO とりあえず投げるけど、本来ならトルツメがよさそう。
     if (teams instanceof Error) {
       console.warn(teams.message);
       throw teams;
     }
-    const state = this.createState(scores, teams);
+    if (games instanceof Error) {
+      throw games;
+    }
+    const state = this.createState(games, teams);
     const store = createIndexStore(state);
     return new View({
       pageName: 'index',
@@ -41,17 +46,23 @@ export default class IndexController {
   }
 
   private createState(
-    scoreList: ReadonlyArray<Score>,
+    gameList: ReadonlyArray<Game>,
     teamList: ReadonlyArray<Team>
   ): IndexState {
     return {
-      latestGameScores: {
-        scores: scoreList.map((score) => ({
-          gameId: score.getGameId(),
-          myTeamName: score.getMyTeamName(),
-          myTeamScore: score.getMyTeamScore(),
-          oponentTeamName: score.getOponentTeamName(),
-          oponentTeamScore: score.getOponentTeamScore(),
+      latestGames: {
+        games: gameList.map((game) => ({
+          gameId: game.getGameId(),
+          firstTeam: {
+            teamId: game.getFirstTeam().getTeamId(),
+            teamName: game.getFirstTeam().getTeamName(),
+          },
+          firstTeamScore: 1, // TODO スコアを入れる
+          secondTeam: {
+            teamId: game.getSecondTeam().getTeamId(),
+            teamName: game.getSecondTeam().getTeamName(),
+          },
+          secondTeamScore: 1, // TODO スコアを入れる
         })),
       },
       frequentBattledTeams: {
