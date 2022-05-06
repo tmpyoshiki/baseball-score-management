@@ -7,10 +7,10 @@ export default class Field {
     this.fieldName = fieldName;
   }
 
-  public getTeamId(): number {
+  public getFieldId(): number {
     return this.fieldId;
   }
-  public getTeamName(): string {
+  public getFieldName(): string {
     return this.fieldName;
   }
 }

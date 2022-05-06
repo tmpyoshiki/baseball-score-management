@@ -45,14 +45,13 @@ export default class Game {
    * 試合実施時刻を計算
    * @param startDateTime 開始時刻
    * @param endDateTime 終了時刻
-   * @returns 試合実施時刻（「YYYY/MM/DD hh:mm〜hh:mm」の形式）
+   * @returns 試合実施時刻（「YYYY年MM月DD日 hh:mm〜hh:mm」の形式）
    */
   private calcDates(startDateTime: string, endDateTime: string) {
-    const startDate: string = moment(
-      startDateTime,
-      'YYYY/MM/DD hh:mm'
-    ).toString();
-    const endDate = moment(endDateTime, 'hh:mm').toString();
-    return `${startDate}~${endDate}`;
+    const startDate = moment(startDateTime)
+      .format('YYYY年MM月DD日 hh:mm')
+      .toString();
+    const endDate = moment(endDateTime).format('hh:mm').toString();
+    return `${startDate}〜${endDate}`;
   }
 }
