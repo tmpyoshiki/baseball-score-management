@@ -1,3 +1,4 @@
+import { TotalScoreResponse } from './ScoreResponse';
 import { FieldResponse } from './FieldResponse';
 import { TeamResponse } from './TeamsResponse';
 
@@ -39,4 +40,9 @@ interface GameResponse {
    * 終了日時
    */
   readonly end_date_time: string;
+
+  /**
+   * 合計スコア
+   */
+  readonly total_score: TotalScoreResponse;
 }
