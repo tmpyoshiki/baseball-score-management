@@ -57,12 +57,12 @@ export default class IndexController {
             teamId: game.getFirstTeam().getTeamId(),
             teamName: game.getFirstTeam().getTeamName(),
           },
-          firstTeamScore: 1, // TODO スコアを入れる
+          firstTeamScore: game.getBattedFirstTeamScore(),
           secondTeam: {
             teamId: game.getSecondTeam().getTeamId(),
             teamName: game.getSecondTeam().getTeamName(),
           },
-          secondTeamScore: 1, // TODO スコアを入れる
+          secondTeamScore: game.getFieldFirstTeamScore(),
         })),
       },
       frequentBattledTeams: {
