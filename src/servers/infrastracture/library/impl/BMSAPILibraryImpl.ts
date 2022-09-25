@@ -74,7 +74,10 @@ export default class BMSAPILibraryImpl implements BMSAPILibrary {
       )
       .catch(
         (error: AxiosError): Failure<T, ErrorResponse> =>
-          new Failure({ status: error.response.status, message: error.message })
+          new Failure({
+            status: error.response?.status ?? 500,
+            message: error.message,
+          })
       );
     if (response.isFailure()) {
       return this.errorHandler(response.value);
