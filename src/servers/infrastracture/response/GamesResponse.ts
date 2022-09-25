@@ -22,11 +22,11 @@ interface GameResponse {
   /**
    * 先攻チーム
    */
-  readonly first_team: TeamResponse;
+  readonly bat_first_team: TeamResponse;
   /**
    * 後攻チーム
    */
-  readonly second_team: TeamResponse;
+  readonly field_first_team: TeamResponse;
   /**
    * 開催球場情報
    */
