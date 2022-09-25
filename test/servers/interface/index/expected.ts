@@ -14,7 +14,7 @@ export const expectedState: IndexState = {
           teamId: 2,
           teamName: 'チーム2',
         },
-        secondTeamScore: 1,
+        secondTeamScore: 4,
       },
     ],
   },
