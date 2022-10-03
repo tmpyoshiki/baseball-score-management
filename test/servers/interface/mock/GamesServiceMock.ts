@@ -12,7 +12,9 @@ const score = new Game(
   secondTeam,
   field,
   '2000/01/01 10:00:00',
-  '2000/01/01 12:00:00'
+  '2000/01/01 12:00:00',
+  1,
+  4
 );
 export const gamesServiceMock: GamesService = {
   getGamesByTeamId: (): Promise<ReadonlyArray<Game>> => {

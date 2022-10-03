@@ -29,12 +29,12 @@ export default class GamesRepositoryImpl implements GamesRepository {
 
     return gameListResponse.game_list.map((gameResponse) => {
       const firstTeam = new Team(
-        gameResponse.first_team.id,
-        gameResponse.first_team.name
+        gameResponse.bat_first_team.id,
+        gameResponse.bat_first_team.name
       );
       const secondTeam = new Team(
-        gameResponse.second_team.id,
-        gameResponse.second_team.name
+        gameResponse.field_first_team.id,
+        gameResponse.field_first_team.name
       );
       const field = new Field(gameResponse.field.id, gameResponse.field.name);
       return new Game(
@@ -43,7 +43,9 @@ export default class GamesRepositoryImpl implements GamesRepository {
         secondTeam,
         field,
         gameResponse.start_date_time,
-        gameResponse.end_date_time
+        gameResponse.end_date_time,
+        gameResponse.total_score.bat_first_team_score,
+        gameResponse.total_score.field_first_team_score
       );
     });
   }

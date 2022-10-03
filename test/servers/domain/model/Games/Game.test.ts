@@ -16,7 +16,9 @@ describe('Games', () => {
       secondTeam,
       field,
       startDateTime,
-      endDateTime
+      endDateTime,
+      1,
+      4
     );
   });
   describe('getGameId', () => {
@@ -32,12 +34,12 @@ describe('Games', () => {
       expect(actualFirstTeam.getTeamName()).toBe('テストチーム1');
     });
   });
-  /*  describe('getMyTeamScore', () => {
+  describe('getMyTeamScore', () => {
     it('正常系: 格納されている自分のチームのスコアが取得できること', () => {
-      const actualMyTeamScore = game.getMyTeamScore();
+      const actualMyTeamScore = game.getBattedFirstTeamScore();
       expect(actualMyTeamScore).toBe(1);
     });
-  });*/
+  });
   describe('getSecondTeam', () => {
     it('正常系: 格納されている後攻のチーム情報が取得できること', () => {
       const actualSecondTeam = game.getSecondTeam();
@@ -45,12 +47,12 @@ describe('Games', () => {
       expect(actualSecondTeam.getTeamName()).toBe('テストチーム2');
     });
   });
-  /*  describe('getOponentTeamScore', () => {
+  describe('getFieldFirstTeamScore', () => {
     it('正常系: 格納されている相手チームのスコアが取得できること', () => {
-      const actualOpponentTeamScore = score.getOponentTeamScore();
+      const actualOpponentTeamScore = game.getFieldFirstTeamScore();
       expect(actualOpponentTeamScore).toBe(4);
     });
-  });*/
+  });
   describe('getField', () => {
     it('正常系: 格納されている球場情報が取得できること', () => {
       const actualField = game.getField();
